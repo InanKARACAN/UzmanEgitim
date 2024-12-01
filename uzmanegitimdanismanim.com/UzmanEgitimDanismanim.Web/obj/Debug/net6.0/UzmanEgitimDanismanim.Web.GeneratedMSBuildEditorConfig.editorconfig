@@ -1,0 +1,159 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = UzmanEgitimDanismanim.Web
+build_property.RootNamespace = UzmanEgitimDanismanim.Web
+build_property.ProjectDir = C:\Projeler\uzmanegitimdanismanim.com\UzmanEgitimDanismanim.Web\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Projeler\uzmanegitimdanismanim.com\UzmanEgitimDanismanim.Web
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Projeler/uzmanegitimdanismanim.com/UzmanEgitimDanismanim.Web/Areas/DanismanPanel/Views/Anasayfa/EnvanterHolland.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFuaXNtYW5QYW5lbFxWaWV3c1xBbmFzYXlmYVxFbnZhbnRlckhvbGxhbmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projeler/uzmanegitimdanismanim.com/UzmanEgitimDanismanim.Web/Areas/DanismanPanel/Views/Anasayfa/EnvanterKendiniDegerlendirme.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFuaXNtYW5QYW5lbFxWaWV3c1xBbmFzYXlmYVxFbnZhbnRlcktlbmRpbmlEZWdlcmxlbmRpcm1lLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projeler/uzmanegitimdanismanim.com/UzmanEgitimDanismanim.Web/Areas/DanismanPanel/Views/Anasayfa/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFuaXNtYW5QYW5lbFxWaWV3c1xBbmFzYXlmYVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projeler/uzmanegitimdanismanim.com/UzmanEgitimDanismanim.Web/Areas/DanismanPanel/Views/Cv/CvEkle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFuaXNtYW5QYW5lbFxWaWV3c1xDdlxDdkVrbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projeler/uzmanegitimdanismanim.com/UzmanEgitimDanismanim.Web/Areas/DanismanPanel/Views/DanismanCv/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFuaXNtYW5QYW5lbFxWaWV3c1xEYW5pc21hbkN2XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projeler/uzmanegitimdanismanim.com/UzmanEgitimDanismanim.Web/Areas/DanismanPanel/Views/DanismanRaporu/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFuaXNtYW5QYW5lbFxWaWV3c1xEYW5pc21hblJhcG9ydVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projeler/uzmanegitimdanismanim.com/UzmanEgitimDanismanim.Web/Areas/DanismanPanel/Views/DenemeTakip/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFuaXNtYW5QYW5lbFxWaWV3c1xEZW5lbWVUYWtpcFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projeler/uzmanegitimdanismanim.com/UzmanEgitimDanismanim.Web/Areas/DanismanPanel/Views/Dokumanlar/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFuaXNtYW5QYW5lbFxWaWV3c1xEb2t1bWFubGFyXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projeler/uzmanegitimdanismanim.com/UzmanEgitimDanismanim.Web/Areas/DanismanPanel/Views/GorevTakip/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFuaXNtYW5QYW5lbFxWaWV3c1xHb3JldlRha2lwXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projeler/uzmanegitimdanismanim.com/UzmanEgitimDanismanim.Web/Areas/DanismanPanel/Views/KaynakOnerisi/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFuaXNtYW5QYW5lbFxWaWV3c1xLYXluYWtPbmVyaXNpXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projeler/uzmanegitimdanismanim.com/UzmanEgitimDanismanim.Web/Areas/DanismanPanel/Views/KonuTakip/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFuaXNtYW5QYW5lbFxWaWV3c1xLb251VGFraXBcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projeler/uzmanegitimdanismanim.com/UzmanEgitimDanismanim.Web/Areas/DanismanPanel/Views/Ogrenci/OgrenciDetay.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFuaXNtYW5QYW5lbFxWaWV3c1xPZ3JlbmNpXE9ncmVuY2lEZXRheS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projeler/uzmanegitimdanismanim.com/UzmanEgitimDanismanim.Web/Areas/DanismanPanel/Views/Ogrenci/OgrenciEkle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFuaXNtYW5QYW5lbFxWaWV3c1xPZ3JlbmNpXE9ncmVuY2lFa2xlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projeler/uzmanegitimdanismanim.com/UzmanEgitimDanismanim.Web/Areas/DanismanPanel/Views/Ogrenci/OgrenciListele.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFuaXNtYW5QYW5lbFxWaWV3c1xPZ3JlbmNpXE9ncmVuY2lMaXN0ZWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projeler/uzmanegitimdanismanim.com/UzmanEgitimDanismanim.Web/Areas/DanismanPanel/Views/Ogrenci/PartialView/_DanismanRaporu.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFuaXNtYW5QYW5lbFxWaWV3c1xPZ3JlbmNpXFBhcnRpYWxWaWV3XF9EYW5pc21hblJhcG9ydS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projeler/uzmanegitimdanismanim.com/UzmanEgitimDanismanim.Web/Areas/DanismanPanel/Views/Ogrenci/PartialView/_DenemeTakip.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFuaXNtYW5QYW5lbFxWaWV3c1xPZ3JlbmNpXFBhcnRpYWxWaWV3XF9EZW5lbWVUYWtpcC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projeler/uzmanegitimdanismanim.com/UzmanEgitimDanismanim.Web/Areas/DanismanPanel/Views/Ogrenci/PartialView/_DersSoruTakip.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFuaXNtYW5QYW5lbFxWaWV3c1xPZ3JlbmNpXFBhcnRpYWxWaWV3XF9EZXJzU29ydVRha2lwLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projeler/uzmanegitimdanismanim.com/UzmanEgitimDanismanim.Web/Areas/DanismanPanel/Views/Ogrenci/PartialView/_Dokumanlar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFuaXNtYW5QYW5lbFxWaWV3c1xPZ3JlbmNpXFBhcnRpYWxWaWV3XF9Eb2t1bWFubGFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projeler/uzmanegitimdanismanim.com/UzmanEgitimDanismanim.Web/Areas/DanismanPanel/Views/Ogrenci/PartialView/_GorevTakip.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFuaXNtYW5QYW5lbFxWaWV3c1xPZ3JlbmNpXFBhcnRpYWxWaWV3XF9Hb3JldlRha2lwLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projeler/uzmanegitimdanismanim.com/UzmanEgitimDanismanim.Web/Areas/DanismanPanel/Views/Ogrenci/PartialView/_KaynakOnerisi.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFuaXNtYW5QYW5lbFxWaWV3c1xPZ3JlbmNpXFBhcnRpYWxWaWV3XF9LYXluYWtPbmVyaXNpLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projeler/uzmanegitimdanismanim.com/UzmanEgitimDanismanim.Web/Areas/DanismanPanel/Views/Ogrenci/PartialView/_OgrenciGuncelle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFuaXNtYW5QYW5lbFxWaWV3c1xPZ3JlbmNpXFBhcnRpYWxWaWV3XF9PZ3JlbmNpR3VuY2VsbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projeler/uzmanegitimdanismanim.com/UzmanEgitimDanismanim.Web/Areas/DanismanPanel/Views/SanalCalismaMasasi/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFuaXNtYW5QYW5lbFxWaWV3c1xTYW5hbENhbGlzbWFNYXNhc2lcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projeler/uzmanegitimdanismanim.com/UzmanEgitimDanismanim.Web/Areas/DanismanPanel/Views/Shared/Components/Footer/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFuaXNtYW5QYW5lbFxWaWV3c1xTaGFyZWRcQ29tcG9uZW50c1xGb290ZXJcRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projeler/uzmanegitimdanismanim.com/UzmanEgitimDanismanim.Web/Areas/DanismanPanel/Views/Shared/Components/MainMenu/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFuaXNtYW5QYW5lbFxWaWV3c1xTaGFyZWRcQ29tcG9uZW50c1xNYWluTWVudVxEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projeler/uzmanegitimdanismanim.com/UzmanEgitimDanismanim.Web/Areas/DanismanPanel/Views/Shared/Components/TopNav/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFuaXNtYW5QYW5lbFxWaWV3c1xTaGFyZWRcQ29tcG9uZW50c1xUb3BOYXZcRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projeler/uzmanegitimdanismanim.com/UzmanEgitimDanismanim.Web/Areas/DanismanPanel/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFuaXNtYW5QYW5lbFxWaWV3c1xTaGFyZWRcX0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projeler/uzmanegitimdanismanim.com/UzmanEgitimDanismanim.Web/Areas/DanismanPanel/Views/SoruTakip/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFuaXNtYW5QYW5lbFxWaWV3c1xTb3J1VGFraXBcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projeler/uzmanegitimdanismanim.com/UzmanEgitimDanismanim.Web/Areas/DanismanPanel/Views/YapimAsamasinda/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFuaXNtYW5QYW5lbFxWaWV3c1xZYXBpbUFzYW1hc2luZGFcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projeler/uzmanegitimdanismanim.com/UzmanEgitimDanismanim.Web/Areas/DanismanPanel/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFuaXNtYW5QYW5lbFxWaWV3c1xfVmlld0ltcG9ydHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projeler/uzmanegitimdanismanim.com/UzmanEgitimDanismanim.Web/Areas/DanismanPanel/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFuaXNtYW5QYW5lbFxWaWV3c1xfVmlld1N0YXJ0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projeler/uzmanegitimdanismanim.com/UzmanEgitimDanismanim.Web/Views/Login/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projeler/uzmanegitimdanismanim.com/UzmanEgitimDanismanim.Web/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projeler/uzmanegitimdanismanim.com/UzmanEgitimDanismanim.Web/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projeler/uzmanegitimdanismanim.com/UzmanEgitimDanismanim.Web/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projeler/uzmanegitimdanismanim.com/UzmanEgitimDanismanim.Web/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UzmanEgitimDanismanim.Core", "UzmanEgitimDanismanim.Core\UzmanEgitimDanismanim.Core.csproj", "{209F4EE4-B7B3-433B-A868-894EB6DFD0E1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UzmanEgitimDanismanim.Data", "UzmanEgitimDanismanim.Data\UzmanEgitimDanismanim.Data.csproj", "{F1282529-F613-4658-AA3C-4D0F28EE1E55}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UzmanEgitimDanismanim.Service", "UzmanEgitimDanismanim.Service\UzmanEgitimDanismanim.Service.csproj", "{0E74B928-DB80-49B3-9DF0-5702D5B247B9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UzmanEgitimDanismanim.Shared", "UzmanEgitimDanismanim.Shared\UzmanEgitimDanismanim.Shared.csproj", "{80CA746C-656E-4690-BF76-BA6B87C5DB52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UzmanEgitimDanismanim.Web", "UzmanEgitimDanismanim.Web\UzmanEgitimDanismanim.Web.csproj", "{3D0C578C-C2DA-4E35-9C76-2A09ED328C90}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{209F4EE4-B7B3-433B-A868-894EB6DFD0E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{209F4EE4-B7B3-433B-A868-894EB6DFD0E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{209F4EE4-B7B3-433B-A868-894EB6DFD0E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{209F4EE4-B7B3-433B-A868-894EB6DFD0E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1282529-F613-4658-AA3C-4D0F28EE1E55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1282529-F613-4658-AA3C-4D0F28EE1E55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1282529-F613-4658-AA3C-4D0F28EE1E55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1282529-F613-4658-AA3C-4D0F28EE1E55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E74B928-DB80-49B3-9DF0-5702D5B247B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E74B928-DB80-49B3-9DF0-5702D5B247B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E74B928-DB80-49B3-9DF0-5702D5B247B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E74B928-DB80-49B3-9DF0-5702D5B247B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80CA746C-656E-4690-BF76-BA6B87C5DB52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80CA746C-656E-4690-BF76-BA6B87C5DB52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80CA746C-656E-4690-BF76-BA6B87C5DB52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80CA746C-656E-4690-BF76-BA6B87C5DB52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D0C578C-C2DA-4E35-9C76-2A09ED328C90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D0C578C-C2DA-4E35-9C76-2A09ED328C90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D0C578C-C2DA-4E35-9C76-2A09ED328C90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D0C578C-C2DA-4E35-9C76-2A09ED328C90}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {507CA0B7-6A23-4E67-9496-D465C06601D7}
+	EndGlobalSection
+EndGlobal

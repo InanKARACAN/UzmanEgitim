@@ -1,0 +1,161 @@
+﻿@using UzmanEgitimDanismanim.Shared.ViewModels
+@using UzmanEgitimDanismanim.Shared.Common
+@model SinavTakipViewModel
+
+    
+@*<div class="row">
+    <div class="col-lg-12">
+        <section class="card">
+            <div class="card-body">
+                <form asp-action="Index" class="cmxform form-horizontal tasi-form" method="post">
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label asp-for="araViewModel.BaslangicTarihi"></label>
+                            <div class="input-group date" id="takvim" data-target-input="nearest">
+                                <input asp-for="araViewModel.BaslangicTarihi" type="text" class="form-control" data-target="#takvim" data-inputmask-alias="datetime" data-inputmask-inputformat="dd.mm.yyyy" data-mask />
+                                <div class="input-group-append" data-target="#takvim" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label asp-for="araViewModel.BitisTarihi"></label>
+                            <div class="input-group date" id="takvim2" data-target-input="nearest">
+                                <input asp-for="araViewModel.BitisTarihi" type="text" class="form-control" data-target="#takvim2" data-inputmask-alias="datetime" data-inputmask-inputformat="dd.mm.yyyy" data-mask />
+                                <div class="input-group-append" data-target="#takvim2" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 mt-4" style="padding-top:8px;">
+                            <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-search"></i> Sorgula</button>
+                        </div>
+                    </div>
+                    <input hidden id="hfCurrentPageIndex" name="araViewModel.request.page" value="0" />
+                </form>
+            </div>
+        </section>
+    </div>
+</div>*@
+
+<input hidden id="hfCurrentPageIndex" name="araViewModel.request.page" value="0" />
+
+<div class="card">
+    <div class="card-body p-0">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Sınav Türü</th>
+                    <th>Sınav Adı</th>
+                    <th>Zorluk Seviyesi</th>
+                    <th>Çözüm Tarihi</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Model.Items)
+                {
+                    <tr class="gradeX" data-widget="expandable-table" aria-expanded="false">
+                        <td>@Html.DisplayFor(modelItem => item.Sinav.SinavAdi)</td>
+                        <td>@Html.DisplayFor(modelItem => item.SinavAdi)</td>
+                        <td>@Html.DisplayFor(modelItem => item.ZorlukSeviyesi)</td>
+                        <td>@Html.Raw(item.CozumTarihi.ToString("dd.MM.yyyy"))</td>
+                    </tr>
+                    <tr class="gradeX expandable-body">
+                        <td colspan="4">
+                            <div class="row">
+                                @foreach (var _item in item.OgrenciSinavTakipCozumler)
+                                {
+                                    <div class="col-sm-3 mb-3">
+                                        <div class="font-weight-bold">@Html.DisplayFor(modelItem => _item.SinavDers.SinavDersAdi)</div>
+                                        <strong>D:</strong> @Html.DisplayFor(modelItem => _item.Dogru) -
+                                        <strong>Y:</strong> @Html.DisplayFor(modelItem => _item.Yanlis) -
+                                        <strong>B:</strong> @Html.DisplayFor(modelItem => _item.Bos) -
+                                        @if (item.SinavId == 3)
+                                        {
+                                            <strong>N:</strong> <strong class="text-danger">@Html.DisplayFor(modelItem => _item.Net3)</strong>
+                                        }
+                                        else
+                                        {
+                                            <strong>N:</strong> <strong class="text-danger">@Html.DisplayFor(modelItem => _item.Net)</strong>
+                                        }
+
+                                    </div>
+                                }
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div class="row pt-3">
+            <div class="col-sm-12 col-md-3">
+                <div class="dataTables_info p-2">Toplam kayıt @Model.PageInfo.TotalItems</div>
+            </div>
+            <div class="col-sm-12 col-md-9">
+                <div class="dataTables_paginate paging_bootstrap pagination" style="justify-content: flex-end;">
+                    <ul class="pagination">
+                        @Html.PageLinks(@Model.PageInfo, x => Url.Action("Index", new { page = x.ToString() }))
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <!-- /.card-body -->
+</div>
+<!-- /.card -->
+<!-- jQuery -->
+<script type="text/javascript" src="/Panel/plugins/jquery/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        DenemeTuru();
+
+        $("#selectSinavId").change(function(){
+            DenemeTuru();
+        });
+
+        $("#inputSinavAdi").on("input", function(){
+            $('#lgsSinavAdi').val($('#inputSinavAdi').val());
+            $('#tytSinavAdi').val($('#inputSinavAdi').val());
+            $('#aytSinavAdi').val($('#inputSinavAdi').val());
+        });
+
+        $("#inputCozumTarihi").on("input", function(){
+            $('#lgsCozumTarihi').val($('#inputCozumTarihi').val());
+            $('#tytCozumTarihi').val($('#inputCozumTarihi').val());
+            $('#aytCozumTarihi').val($('#inputCozumTarihi').val());
+        });
+
+        $("#selectZorlukSeviyesi").on("change", function() {
+            $('#lgsZorlukSeviyesi').val($('#selectZorlukSeviyesi').val());
+            $('#tytZorlukSeviyesi').val($('#selectZorlukSeviyesi').val());
+            $('#aytZorlukSeviyesi').val($('#selectZorlukSeviyesi').val());
+        });
+
+    });
+
+    function DenemeTuru(){
+        switch($("#selectSinavId").val()){
+            case "3":
+                $("#lgsForm").css('display','block');
+                $("#tytForm").css('display','none');
+                $("#aytForm").css('display','none');
+                break;
+            case "4":
+                $("#lgsForm").css('display','none');
+                $("#tytForm").css('display','block');
+                $("#aytForm").css('display','none');
+                break;
+            case "5":
+                $("#lgsForm").css('display','none');
+                $("#tytForm").css('display','none');
+                $("#aytForm").css('display','block');
+                break;
+        }
+    };
+</script>

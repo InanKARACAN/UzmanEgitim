@@ -1,0 +1,155 @@
+﻿@model UzmanEgitimDanismanim.Shared.ViewModels.DersTakipViewModel
+@using System.Security.Claims
+@using UzmanEgitimDanismanim.Shared.Common
+@{
+    ViewData["Title"] = "Danışman Panel - Sanal Çalışma Masası";
+}
+
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Sanal Çalışma Masası</h1>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <section class="card">
+            <div class="card-body">
+
+                <div id="sayac">
+                    <ul>
+                        <li id="saat">00</li>
+                        <li>:</li>
+                        <li id="dakika">00</li>
+                        <li>:</li>
+                        <li id="saniye">00</li>
+                        <li>:</li>
+                        <li id="salise">00</li>
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                <div id="kontroller">
+                    <button id="baslat" style="background: #2ecc71;">BAŞLAT</button>
+                    <button id="durdur" style="background: #3498db;">DURAKLAT</button>
+                    <button id="sifirla" style="background: #c0392b;">SIFIRLA</button>
+                </div>
+
+
+            </div>
+        </section>
+    </div>
+</div>
+
+<!-- jQuery -->
+<script type="text/javascript" src="/Panel/plugins/jquery/jquery.min.js"></script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var sayacfunction; // sayacfunction unu global değişken olarak tanımlıyoruz
+    $('#baslat').click(function(){ // baslat butonuna tıklandığında
+        sayacfunction = setInterval(function(){
+            var csl = Math.floor($('#sayac #salise').html()),
+                csn = Math.floor($('#sayac #saniye').html()),
+                cdk = Math.floor($('#sayac #dakika').html()),
+                csa = Math.floor($('#sayac #saat').html()); // saat, dakika, saniye, salise değerlerimizi Math.floor ile integer yapıyoruz
+            if(csl==99) { // eğer salise 99 oldu ise
+                csl = -1; // saliseyi -1 yapıyoruz ki +1 olduğunda sıfırlansın
+                if(csn==59) { // eğer saniye 59 oldu ise
+                    csn = -1; // saniyeyi -1 yapıyoruz ki +1 olduğunda sıfırlansın
+                    if(cdk==59) { // dakika 59 oldu ise
+                        cdk = -1; // dakikayı sıfırlıyoruz
+                        if(csa<9) // saat 9 dan küçük ise
+                            $('#sayac #saat').html('0'+(csa+1)); // başına sıfır koyup hanesine yazdırıyoruz
+                        else // değilse
+                            $('#sayac #saat').html(csa+1); // olduğu gibi hanesine yazdırıyoruz
+                    }
+                    if(cdk<9) // dakika 9 dan küçük ise
+                        $('#sayac #dakika').html('0'+(cdk+1)); // 0 ile
+                    else // değilse
+                        $('#sayac #dakika').html(cdk+1); // 0 olmadan
+                }
+                if(csn<9) // saniye için de aynı işlemi yapıyoruz
+                    $('#sayac #saniye').html('0'+(csn+1));
+                else
+                    $('#sayac #saniye').html(csn+1);
+            }
+            if(csl<9) // salise için de aynı
+                $('#sayac #salise').html('0'+(csl+1));
+            else
+                $('#sayac #salise').html(csl+1);
+        },10); // setinterval fonksiyonumuz 10 milisaniyede bir çalışacak 10 milisaniye saniyenin 1/100 ü yani 1 saliseye eşittir
+        $("#baslat").addClass('pasif'); // başlat butonumuzu pasif yapıp
+        $("#durdur").removeClass('pasif'); // durdur butonumuzu aktif yapıyoruz
+        $('#sifirla').fadeIn(); // ve sıfırla butonunu da görünür yapıyoruz
+    });
+    $('#durdur').click(function(){ // durdur butonuna tıklandığında
+        clearInterval(sayacfunction); // clearinterval ile sayacfunction unu durduruyoruz NOT : sayacfunction unu global tanımlamasaydık burada erişemeyecektik
+        $("#durdur").addClass('pasif'); // durdur butonunu pasif yapıp
+        $("#baslat").removeClass('pasif'); // başlat butonunu aktif yapıyoruz
+    });
+    $('#sifirla').click(function(){ // sıfırla butonuna tıklandığında
+        clearInterval(sayacfunction); // sayacı durdurup
+        $('#sayac #saat').html('00'); // saat, dakika, saniye ve salise hanelerini 00 yapıyoruz
+        $('#sayac #dakika').html('00');
+        $('#sayac #saniye').html('00');
+        $('#sayac #salise').html('00');
+        $("#durdur").addClass('pasif'); // durduru pasif
+        $("#baslat").removeClass('pasif'); // baslatı aktif yapıyoruz
+        $('#sifirla').fadeOut(); // ve sıfırla butonunu gizliyoruz
+    });
+
+    });
+
+</script>
+
+<style>
+* { margin: 0; padding: 0; outline: none; }
+body {
+    background: #ecf0f1;
+}
+#sayac {
+    width: 390px;
+    padding: 20px;
+    margin: 60px auto 10px auto;
+    background: #2c3e50;
+    color: #FFF;
+    font: 30px Arial;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    text-align:center;
+}
+#sayac ul { list-style: none; }
+#sayac ul li { width: 50px; float: left; text-align: center; }
+#kontroller {
+    width: 240px;
+    margin: 0 auto;
+}
+button {
+    width: 240px;
+    padding: 20px;
+    color: #fff;
+    border: none;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    font: 15px Arial;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+#sifirla { display: none; }
+.pasif { background: #95a5a6 !important; pointer-events: none; }
+.clear { clear: both; }
+</style>

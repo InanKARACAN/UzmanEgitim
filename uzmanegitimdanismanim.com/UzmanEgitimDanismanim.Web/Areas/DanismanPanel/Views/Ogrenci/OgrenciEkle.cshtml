@@ -1,0 +1,96 @@
+﻿@using System.Security.Claims
+@using UzmanEgitimDanismanim.Shared.Dtos
+@model KullaniciDto
+@{
+    ViewData["Title"] = "Danışman Panel - Öğrenci Ekle";
+}
+
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Öğrenci Ekle</h1>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+
+<div class="card">
+    <div class="card-body">
+
+        <form asp-action="OgrenciEkle" class="cmxform form-horizontal tasi-form" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input asp-for="KullaniciRolId" value="7" type="hidden" />
+            <input asp-for="KurumId" value="@Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Actor).Value)" type="hidden" />
+
+            <div class="form-group row">
+                <label asp-for="SinifId" class="control-label col-lg-2"></label>
+                <div class="col-lg-10">
+                    <select asp-for="SinifId" asp-items="@ViewBag.SinifListesi" class="form-control"></select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="Ad" class="control-label col-lg-2"></label>
+                <div class="col-lg-10">
+                    <input asp-for="Ad" class="form-control" required />
+                    <span asp-validation-for="Ad" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="Soyad" class="control-label col-lg-2"></label>
+                <div class="col-lg-10">
+                    <input asp-for="Soyad" class="form-control" required />
+                    <span asp-validation-for="Soyad" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="Eposta" class="control-label col-lg-2"></label>
+                <div class="col-lg-10">
+                    <input type="email" asp-for="Eposta" class="form-control" required />
+                    <span asp-validation-for="Eposta" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="CepTelefonu" class="control-label col-lg-2"></label>
+                <div class="col-lg-10">
+                    <input asp-for="CepTelefonu" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask />
+                    <span asp-validation-for="CepTelefonu" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="Sifre" class="control-label col-lg-2"></label>
+                <div class="col-lg-10">
+                    <input asp-for="Sifre" class="form-control" required />
+                    <span asp-validation-for="Sifre" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="UyelikBitisTarihi" class="control-label col-lg-2"></label>
+                <div class="col-lg-10">
+                    <div class="input-group date" id="takvimGenis" data-target-input="nearest">
+                        <input asp-for="UyelikBitisTarihi" type="text" class="form-control" data-target="#takvimGenis" data-inputmask-alias="datetime" data-inputmask-inputformat="dd.mm.yyyy" data-mask required>
+                        <div class="input-group-append" data-target="#takvimGenis" data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-lg-6">
+                    <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-save"></i> Kaydet</button>
+                </div>
+                <div class="col-lg-6">
+                    <a asp-controller="Ogrenci" asp-action="OgrenciListele" asp-area="Yonetim" class="btn btn-default btn-block"><i class="fa fa-undo"></i> İptal</a>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <!-- /.card-body -->
+</div>
+<!-- /.card -->

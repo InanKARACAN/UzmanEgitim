@@ -1,0 +1,88 @@
+﻿@using UzmanEgitimDanismanim.Shared.Dtos
+@using System.Security.Claims
+@using System.ComponentModel
+@using System.ComponentModel.DataAnnotations
+@model OgrenciEnvanteriHollandDto
+
+@{
+    ViewData["Title"] = "Danışman Panel - Holland Envanteri";
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Holland Envanteri</h1>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+
+<div class="card">
+    <div class="card-body p-0">
+
+        <form asp-action="EnvanterHolland" method="post">
+            <input name="OgrenciID" value="@User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Sid).Value" type="hidden" />
+            <div class="card-body table-responsive p-0" style="height: 400px;">
+                <table class="table table-head-fixed text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Maddeler</th>
+                            <th>Hoşlanırım</th>
+                            <th>Farketmez</th>
+                            <th>Hoşlanmam</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @for (int i = 1; i < 91; i++)
+                        {
+                            var property = @Model.GetType().GetProperty("Soru" + i.ToString());
+                            var attribute = property.GetCustomAttributes(typeof(DisplayNameAttribute), false);
+                            var displayname = ((DisplayNameAttribute)attribute[0]).DisplayName;
+                            //@($"Soru{i.ToString()}")
+                            var val = (int)property.GetValue(Model, null);
+                            <tr>
+                                <td><label>@i</label></td>
+                                <td>
+                                    <label>@displayname</label>
+                                   @* <span asp-validation-for="@Model.Soru1"></span>
+                                    <span class="field-validation-valid" data-valmsg-for="@property.Name" data-valmsg-replace="true"></span>*@
+                                </td>
+                                <td><input id=@property.Name name=@property.Name type="radio" value="1" checked="@(val==1 ? "checked" : null)" required /> </td>
+                                <td><input id=@property.Name name=@property.Name type="radio" value="2" checked="@(val==2 ? "checked" : null)" /> </td>
+                                <td><input id=@property.Name name=@property.Name type="radio" value="3" checked="@(val==3 ? "checked" : null)" /> </td>
+                            </tr>
+                        }
+
+                        @* @for (int i = 1; i < 91; i++)
+                            {
+                            //var soru = Model.$"Soru{i.ToString()}";
+                            <tr>
+                            <td><label>@i</label></td>
+                            <td>
+                            <input id=@($"Soru{i.ToString()}") name=@($"Soru{i.ToString()}") type="text" value="1" />
+                            </td>
+                            <td><input id=@($"Soru{i.ToString()}") name=@($"Soru{i.ToString()}") type="radio" value="1" /> </td>
+                            <td><input id=@($"Soru{i.ToString()}") name=@($"Soru{i.ToString()}") type="radio" value="2" /> </td>
+                            <td><input id=@($"Soru{i.ToString()}") name=@($"Soru{i.ToString()}") type="radio" value="3" /> </td>
+                            </tr>
+                            }
+                        *@
+
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-body float-right">
+                <button type="submit" class="btn btn-primary">Holland Envanteri Ekle</button>
+            </div>
+        </form>
+
+    </div>
+    <!-- /.card-body -->
+</div>
+<!-- /.card -->

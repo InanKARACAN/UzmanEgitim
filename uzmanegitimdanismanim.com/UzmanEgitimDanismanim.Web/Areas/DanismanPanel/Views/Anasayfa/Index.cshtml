@@ -1,0 +1,538 @@
+﻿@using System.Security.Claims
+@{
+    ViewData["Title"] = "Danışman Panel - Anasayfa";
+
+    var role = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role).Value;
+
+    string sinavAdi = "";
+    string kalanGun = "";
+    string gecenOran = "";
+
+    var sinavVarMi = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Country);
+    if (sinavVarMi != null)
+    {
+        sinavAdi = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Country).Value;
+        kalanGun = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.PostalCode).Value;
+        gecenOran = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Dns).Value;
+    }
+}
+
+<input type="hidden" value="@role" id="hddRole" />
+
+@if (role == "Kurum Öğrenci" || role == "Kurum Veli")
+{
+    if (sinavVarMi != null)
+    {
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <div class="info-box bg-info">
+                    <span class="info-box-icon"><i class="far fa-calendar-alt"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">@sinavAdi Kalan Gün</span>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: @gecenOran%"></div>
+                        </div>
+                        <span class="progress-description">
+                            <strong>@kalanGun gün kaldı</strong>
+                        </span>
+                    </div>
+                    <!-- /.info-box-content -->
+        </div>
+            </div>
+        </div>
+    }
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-warning">
+                <div class="card-header">
+                    <h3 class="card-title">Detaylı Grafik</h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Öğrenci</label>
+                                <select id="ogrenciId" asp-items="@ViewBag.OgrenciListesi" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label>Sınıf</label>
+                                <select id="sinifId" asp-items="@ViewBag.OgrenciSinifListesi" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label>Başlangıç Tarihi</label>
+                                <div class="input-group date" id="takvim" data-target-input="nearest">
+                                    <input id="baslangicTarihi" type="text" class="form-control" data-target="#takvim" data-inputmask-alias="datetime" data-inputmask-inputformat="dd.mm.yyyy" data-mask>
+                                    <div class="input-group-append" data-target="#takvim" data-toggle="datetimepicker">
+                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label>Bitiş Tarihi</label>
+                                <div class="input-group date" id="takvim2" data-target-input="nearest">
+                                    <input id="bitisTarihi" type="text" class="form-control" data-target="#takvim2" data-inputmask-alias="datetime" data-inputmask-inputformat="dd.mm.yyyy" data-mask>
+                                    <div class="input-group-append" data-target="#takvim2" data-toggle="datetimepicker">
+                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label>&nbsp;</label>
+                                <button id="btnGrafikGetir" class="btn btn-block btn-primary">Grafik Getir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.card-body -->
+        </div>
+            <!-- /.card -->
+    </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <!-- DONUT CHART -->
+        <div class="card card-danger">
+                <div class="card-header">
+                    <h3 class="card-title">Ders Grafiği (dk.)</h3>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body" id="dersGrafikChartContent">
+                    <canvas id="dersGrafikChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                </div>
+
+
+                <!-- /.card-body -->
+        </div>
+            <!-- /.card -->
+            <!-- DONUT CHART -->
+        <div class="card card-info" id="divDersKonuGrafigi">
+                <div class="card-header">
+                    <h3 class="card-title">Ders Konu Grafiği (dk.)</h3>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body" id="dersKonuGrafikChartContent">
+                    <canvas id="dersKonuGrafikChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                </div>
+                <!-- /.card-body -->
+        </div>
+            <!-- /.card -->
+
+
+    </div>
+
+        <div class="col-md-6">
+            <!-- DONUT CHART -->
+        <div class="card card-success">
+                <div class="card-header">
+                    <h3 class="card-title">Soru Grafiği (adet)</h3>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body" id="soruGrafikChartContent">
+                    <canvas id="soruGrafikChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                </div>
+                <!-- /.card-body -->
+        </div>
+            <!-- /.card -->
+
+                <!-- DONUT CHART -->
+        <div class="card card-blue" id="divSoruKonuGrafigi">
+                <div class="card-header">
+                    <h3 class="card-title">Soru Konu Grafiği (adet)</h3>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body" id="soruKonuGrafikChartContent">
+                    <canvas id="soruKonuGrafikChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                </div>
+                <!-- /.card-body -->
+        </div>
+            <!-- /.card -->
+    </div>
+    </div>
+
+}
+
+
+
+<!-- jQuery -->
+<script src="~/Panel/plugins/jquery/jquery.min.js"></script>
+<!-- ChartJS -->
+<script src="~/Panel/plugins/chart.js/Chart.min.js"></script>
+
+
+<!-- Page specific script -->
+
+<script type="text/javascript">
+
+    if ($("#hddRole").val() == "Kurum Öğrenci" || $("#hddRole").val() == "Kurum Veli")
+        GrafikGetir($("#ogrenciId").val(),$("#sinifId").val(),$("#baslangicTarihi").val(),$("#bitisTarihi").val());
+
+    $("#btnGrafikGetir").click(function() {
+        GrafikGetir($("#ogrenciId").val(),$("#sinifId").val(),$("#baslangicTarihi").val(),$("#bitisTarihi").val());
+    });
+
+    $("#ogrenciId").change(function(){
+        $('#sinifId').html("");
+        var ogrenciId = $("#ogrenciId").val();
+
+        if (parseInt(ogrenciId)) {
+            $.ajax({
+                type: "GET",
+                url: "/DanismanPanel/Anasayfa/OgrenciSinifGetir",
+                data: {
+                    "ogrenciId": ogrenciId,
+                },
+                async: false,
+                success: function (e) {
+                    var jsonObj = e;
+                    $.each(jsonObj, function () {
+                    $('#sinifId')
+                    .append($("<option></option>")
+                    .attr("value", $(this).attr("sinifId"))
+                    .text($(this).attr("sinifAdi")));
+                    });
+                },
+                error: function (err) {
+                }
+            });
+        }
+    });
+
+
+    function GrafikGetir (ogrenciId, sinifId, baslangicTarihi, bitisTarihi) {
+
+        $("#divDersKonuGrafigi").hide();
+        $("#divSoruKonuGrafigi").hide();
+        //console.log('baslangicTarihi:',baslangicTarihi,'bitisTarihi:',bitisTarihi);
+        var pattern = /(\d{2})\.(\d{2})\.(\d{4})/;
+        if (baslangicTarihi != "") baslangicTarihi = new Date(baslangicTarihi.replace(pattern,'$3-$2-$1')).toUTCString();
+        if (bitisTarihi != "") bitisTarihi = new Date(bitisTarihi.replace(pattern,'$3-$2-$1')).toUTCString();
+
+        var dersGrafikDataStr = "";
+        $.ajax({
+            type: "GET",
+            url: "/DanismanPanel/KonuTakip/OgrenciDersGrafikGetir",
+            data: {
+                "ogrenciId": ogrenciId,
+                "sinifId": sinifId,
+                "baslangicTarihi": baslangicTarihi,
+                "bitisTarihi": bitisTarihi
+
+            },
+            async: false,
+            cache: false,
+            success: function (e) {
+                dersGrafikDataStr = e;
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+
+       let dersGrafikChart = document.getElementById("dersGrafikChart");
+
+       if (dersGrafikDataStr == "")
+       {
+            dersGrafikChart.setAttribute("hidden", "hidden");
+       }
+       else
+       {
+            dersGrafikChart.removeAttribute("hidden");
+
+            $('#dersGrafikChartContent').empty();
+            $('#dersGrafikChartContent').append('<canvas id="dersGrafikChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>');
+
+            var obj = JSON.parse(dersGrafikDataStr);
+            console.log(obj);
+
+            var donutOptions = {
+                maintainAspectRatio : false,
+                responsive : true,
+              };
+
+              var donutOptionsDers = {
+                maintainAspectRatio : false,
+                responsive : true,
+                   onClick: (e, activeEls, chart) => {
+                       //console.log(activeEls);
+                       DersKonuGrafikGetir(ogrenciId, sinifId ,baslangicTarihi, bitisTarihi, activeEls[0]._model.label);
+                                                        }
+                };
+
+
+                var donutOptionsSoru = {
+                maintainAspectRatio : false,
+                responsive : true,
+                   onClick: (e, activeEls, chart) => {
+                       //console.log(activeEls);
+                       SoruKonuGrafikGetir(ogrenciId, sinifId ,baslangicTarihi, bitisTarihi, activeEls[0]._model.label);
+                                                        }
+                };
+
+            var dersGrafikChartCanvas = $('#dersGrafikChart').get(0).getContext('2d');
+            var dersGrafikData = {
+                labels: obj.labels,
+                datasets: [
+                    {
+                        data: obj.data,
+                        backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de', '#ff0000', '#ff00cc', '#996600', '#cc3300', '#cccc00', '#9966ff', '#996666', '#009933', '#ffcc66', '#993399', '#000099', '#66cc99','#cc3300'],
+                    }
+                ]
+            };
+
+            new Chart(dersGrafikChartCanvas, {
+                type: 'doughnut',
+                data: dersGrafikData,
+                options: donutOptionsDers,
+
+            }).update();
+       }
+
+
+
+
+        var soruGrafikDataStr ="";
+
+        $.ajax({
+            type: "GET",
+            url: "/DanismanPanel/SoruTakip/OgrenciSoruGrafikGetir",
+            data: {
+                "ogrenciId": ogrenciId,
+                "sinifId": sinifId,
+                "baslangicTarihi": baslangicTarihi,
+                "bitisTarihi": bitisTarihi
+            },
+            async: false,
+            cache: false,
+            success: function (e) {
+                soruGrafikDataStr = e;
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+
+
+        let soruGrafikChart = document.getElementById("soruGrafikChart");
+
+       if (soruGrafikDataStr == "")
+       {
+           soruGrafikChart.setAttribute("hidden", "hidden");
+       }
+       else
+       {
+            soruGrafikChart.removeAttribute("hidden");
+
+            $('#soruGrafikChartContent').empty();
+            $('#soruGrafikChartContent').append('<canvas id="soruGrafikChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>');
+
+           var objSoru = JSON.parse(soruGrafikDataStr);
+
+            var soruGrafikChartCanvas = $('#soruGrafikChart').get(0).getContext('2d');
+
+            var soruGrafikData = {
+                labels: objSoru.labels,
+                datasets: [
+                    {
+                        data: objSoru.data,
+                        backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de', '#ff0000', '#ff00cc', '#996600', '#cc3300', '#cccc00', '#9966ff', '#996666', '#009933', '#ffcc66', '#993399', '#000099', '#66cc99','#cc3300'],
+                    }
+                ]
+            };
+
+            new Chart(soruGrafikChartCanvas, {
+                type: 'doughnut',
+                data: soruGrafikData,
+                options: donutOptionsSoru
+            });
+       }
+
+    };
+
+
+    function DersKonuGrafikGetir (ogrenciId, sinifId, baslangicTarihi, bitisTarihi, dersAdi) {
+        var dersKonuGrafikDataStr = "";
+        $.ajax({
+            type: "GET",
+            url: "/DanismanPanel/KonuTakip/OgrenciDersKonuGrafikGetir",
+            data: {
+                "ogrenciId": ogrenciId,
+                "sinifId": sinifId,
+                "baslangicTarihi": baslangicTarihi,
+                "bitisTarihi": bitisTarihi,
+                "dersAdi": dersAdi
+
+            },
+            async: false,
+            cache: false,
+            success: function (e) {
+                dersKonuGrafikDataStr = e;
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+
+       let dersKonuGrafikChart = document.getElementById("dersKonuGrafikChart");
+
+       if (dersKonuGrafikDataStr == "")
+       {
+            dersKonuGrafikChart.setAttribute("hidden", "hidden");
+       }
+       else
+       {
+           $("#divDersKonuGrafigi").show();
+            dersKonuGrafikChart.removeAttribute("hidden");
+
+            $('#dersKonuGrafikChartContent').empty();
+            $('#dersKonuGrafikChartContent').append('<canvas id="dersKonuGrafikChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>');
+
+            var obj = JSON.parse(dersKonuGrafikDataStr);
+            console.log(obj);
+
+            var donutOptions = {
+                maintainAspectRatio : false,
+                responsive : true,
+              };
+
+            var dersKonuGrafikChartCanvas = $('#dersKonuGrafikChart').get(0).getContext('2d');
+            var dersKonuGrafikData = {
+                labels: obj.labels,
+                datasets: [
+                    {
+                        data: obj.data,
+                        backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de', '#ff0000', '#ff00cc', '#996600', '#cc3300', '#cccc00', '#9966ff', '#996666', '#009933', '#ffcc66', '#993399', '#000099', '#66cc99','#cc3300'],
+                    }
+                ]
+            };
+
+            new Chart(dersKonuGrafikChartCanvas, {
+                type: 'doughnut',
+                data: dersKonuGrafikData,
+                options: donutOptions,
+
+            }).update();
+       }
+    };
+
+
+    function SoruKonuGrafikGetir (ogrenciId, sinifId, baslangicTarihi, bitisTarihi, dersAdi) {
+        var soruKonuGrafikDataStr = "";
+        $.ajax({
+            type: "GET",
+            url: "/DanismanPanel/SoruTakip/OgrenciSoruKonuGrafikGetir",
+            data: {
+                "ogrenciId": ogrenciId,
+                "sinifId": sinifId,
+                "baslangicTarihi": baslangicTarihi,
+                "bitisTarihi": bitisTarihi,
+                "dersAdi": dersAdi
+
+            },
+            async: false,
+            cache: false,
+            success: function (e) {
+                soruKonuGrafikDataStr = e;
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+
+       let soruKonuGrafikChart = document.getElementById("soruKonuGrafikChart");
+
+       if (soruKonuGrafikDataStr == "")
+       {
+            soruKonuGrafikChart.setAttribute("hidden", "hidden");
+       }
+       else
+       {
+           $("#divSoruKonuGrafigi").show();
+            soruKonuGrafikChart.removeAttribute("hidden");
+
+            $('#soruKonuGrafikChartContent').empty();
+            $('#soruKonuGrafikChartContent').append('<canvas id="soruKonuGrafikChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>');
+
+            var obj = JSON.parse(soruKonuGrafikDataStr);
+            //console.log(obj);
+
+            var donutOptions = {
+                maintainAspectRatio : false,
+                responsive : true,
+              };
+
+            var soruKonuGrafikChartCanvas = $('#soruKonuGrafikChart').get(0).getContext('2d');
+            var soruKonuGrafikData = {
+                labels: obj.labels,
+                datasets: [
+                    {
+                        data: obj.data,
+                        backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de', '#ff0000', '#ff00cc', '#996600', '#cc3300', '#cccc00', '#9966ff', '#996666', '#009933', '#ffcc66', '#993399', '#000099', '#66cc99','#cc3300'],
+                    }
+                ]
+            };
+
+            new Chart(soruKonuGrafikChartCanvas, {
+                type: 'doughnut',
+                data: soruKonuGrafikData,
+                options: donutOptions,
+
+            }).update();
+       }
+    };
+
+
+
+</script>

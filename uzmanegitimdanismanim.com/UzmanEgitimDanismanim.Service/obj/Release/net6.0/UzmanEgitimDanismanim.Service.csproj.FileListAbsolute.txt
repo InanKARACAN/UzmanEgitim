@@ -1,0 +1,17 @@
+C:\Projeler\uzmanegitimdanismanim.com\UzmanEgitimDanismanim.Service\bin\Release\net6.0\UzmanEgitimDanismanim.Service.deps.json
+C:\Projeler\uzmanegitimdanismanim.com\UzmanEgitimDanismanim.Service\bin\Release\net6.0\UzmanEgitimDanismanim.Service.dll
+C:\Projeler\uzmanegitimdanismanim.com\UzmanEgitimDanismanim.Service\bin\Release\net6.0\UzmanEgitimDanismanim.Service.pdb
+C:\Projeler\uzmanegitimdanismanim.com\UzmanEgitimDanismanim.Service\bin\Release\net6.0\UzmanEgitimDanismanim.Core.dll
+C:\Projeler\uzmanegitimdanismanim.com\UzmanEgitimDanismanim.Service\bin\Release\net6.0\UzmanEgitimDanismanim.Shared.dll
+C:\Projeler\uzmanegitimdanismanim.com\UzmanEgitimDanismanim.Service\bin\Release\net6.0\UzmanEgitimDanismanim.Core.pdb
+C:\Projeler\uzmanegitimdanismanim.com\UzmanEgitimDanismanim.Service\bin\Release\net6.0\UzmanEgitimDanismanim.Shared.pdb
+C:\Projeler\uzmanegitimdanismanim.com\UzmanEgitimDanismanim.Service\obj\Release\net6.0\UzmanEgitimDanismanim.Service.csproj.AssemblyReference.cache
+C:\Projeler\uzmanegitimdanismanim.com\UzmanEgitimDanismanim.Service\obj\Release\net6.0\UzmanEgitimDanismanim.Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projeler\uzmanegitimdanismanim.com\UzmanEgitimDanismanim.Service\obj\Release\net6.0\UzmanEgitimDanismanim.Service.AssemblyInfoInputs.cache
+C:\Projeler\uzmanegitimdanismanim.com\UzmanEgitimDanismanim.Service\obj\Release\net6.0\UzmanEgitimDanismanim.Service.AssemblyInfo.cs
+C:\Projeler\uzmanegitimdanismanim.com\UzmanEgitimDanismanim.Service\obj\Release\net6.0\UzmanEgitimDanismanim.Service.csproj.CoreCompileInputs.cache
+C:\Projeler\uzmanegitimdanismanim.com\UzmanEgitimDanismanim.Service\obj\Release\net6.0\UzmanEgitimDanismanim.Service.dll
+C:\Projeler\uzmanegitimdanismanim.com\UzmanEgitimDanismanim.Service\obj\Release\net6.0\refint\UzmanEgitimDanismanim.Service.dll
+C:\Projeler\uzmanegitimdanismanim.com\UzmanEgitimDanismanim.Service\obj\Release\net6.0\UzmanEgitimDanismanim.Service.pdb
+C:\Projeler\uzmanegitimdanismanim.com\UzmanEgitimDanismanim.Service\obj\Release\net6.0\ref\UzmanEgitimDanismanim.Service.dll
+C:\Projeler\uzmanegitimdanismanim.com\UzmanEgitimDanismanim.Service\obj\Release\net6.0\UzmanEgi.E9D23C84.Up2Date

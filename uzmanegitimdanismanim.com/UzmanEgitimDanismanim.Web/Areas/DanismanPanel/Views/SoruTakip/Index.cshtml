@@ -1,0 +1,166 @@
+﻿@model UzmanEgitimDanismanim.Shared.ViewModels.SoruTakipViewModel
+@using System.Security.Claims
+@using UzmanEgitimDanismanim.Shared.Common
+
+@{
+    ViewData["Title"] = "Danışman Panel - Soru Takip";
+}
+
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Soru Takip</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li> <a class="btn btn-primary btn-block" data-toggle="modal" href="#modalSoruTakipEkle">Soru Çözüm Ekle</a></li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <section class="card">
+            <div class="card-body">
+                <form asp-action="Index" class="cmxform form-horizontal tasi-form" method="post">
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label asp-for="araViewModel.BaslangicTarihi"></label>
+                            <div class="input-group date" id="takvim" data-target-input="nearest">
+                                <input asp-for="araViewModel.BaslangicTarihi" type="text" class="form-control" data-target="#takvim" data-inputmask-alias="datetime" data-inputmask-inputformat="dd.mm.yyyy" data-mask />
+                                <div class="input-group-append" data-target="#takvim" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label asp-for="araViewModel.BitisTarihi"></label>
+                            <div class="input-group date" id="takvim2" data-target-input="nearest">
+                                <input asp-for="araViewModel.BitisTarihi" type="text" class="form-control" data-target="#takvim2" data-inputmask-alias="datetime" data-inputmask-inputformat="dd.mm.yyyy" data-mask />
+                                <div class="input-group-append" data-target="#takvim2" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 mt-4" style="padding-top:8px;">
+                            <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-search"></i> Sorgula</button>
+                        </div>
+                    </div>
+                    <input hidden id="hfCurrentPageIndex" name="araViewModel.request.page" value="0" />
+                </form>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+<div class="card">
+    <div class="card-body p-0">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Ders</th>
+                    <th>Konu</th>
+                    <th>Çözüm Tarihi</th>
+                    <th>Adet</th>
+                    <th>Sil</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Model.Items)
+                {
+                    <tr class="gradeX">
+                        <td>@Html.DisplayFor(modelItem => item.SinifDersKonu.SinifDers.SinifDersAdi)</td>
+                        <td>@Html.DisplayFor(modelItem => item.SinifDersKonu.SinifDersKonuAdi)</td>
+                        <td>@Html.Raw(item.CozumTarihi.ToString("dd.MM.yyyy"))</td>
+                        <td>@Html.DisplayFor(modelItem => item.Adet)</td>
+                        <td>
+                            <button type="button" class="btn btn-sm btn-danger btn-block" data-href="SoruTakip/OgrenciSoruTakipSil?id=@Core.Extensions.EncryptDecrypExt.Encrypt(item.Id)" data-toggle="modal" data-target="#confirm-delete"><i class="fa fa-trash"></i> Sil</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        
+        <div class="row pt-3">
+            <div class="col-sm-12 col-md-3">
+                <div class="dataTables_info p-2">Toplam kayıt @Model.PageInfo.TotalItems</div>
+            </div>
+            <div class="col-sm-12 col-md-9">
+                <div class="dataTables_paginate paging_bootstrap pagination" style="justify-content: flex-end;">
+                    <ul class="pagination">
+                        @Html.PageLinks(@Model.PageInfo, x => Url.Action("Index", new { page = x.ToString() }))
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.card-body -->
+</div>
+<!-- /.card -->
+<!-- Modal -->
+<div class="modal fade " id="modalSoruTakipEkle" tabindex="-1" role="dialog" aria-labelledby="modalSoruTakipLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalSoruTakip">Soru Çözüm Ekle</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form asp-action="OgrenciSoruTakipEkle" method="post">
+                    <input name="OgrenciID" value="@User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Sid).Value" type="hidden" />
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Ders</label>
+                                <select name="SinifDersId" id="SinifDersId" asp-items="@ViewBag.SinifDersListesi" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Konu</label>
+                                <select name="SinifDersKonuId" id="SinifDersKonuId" asp-items="@ViewBag.SinifDersKonuListesi" class="form-control"></select>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Çözüm Tarihi</label>
+                                <div class="input-group date" id="takvimEkle" data-target-input="nearest">
+                                    <input name="CozumTarihi" id="CozumTarihi" type="text" class="form-control" data-target="#takvimEkle" data-inputmask-alias="datetime" data-inputmask-inputformat="dd.mm.yyyy" data-mask required>
+                                    <div class="input-group-append" data-target="#takvimEkle" data-toggle="datetimepicker">
+                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Adet</label>
+                                <input name="Adet" id="Adet" type="number" class="form-control" placeholder="Adet" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row float-right">
+                        <button type="submit" class="btn btn-primary">Çözüm Ekle</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal -->

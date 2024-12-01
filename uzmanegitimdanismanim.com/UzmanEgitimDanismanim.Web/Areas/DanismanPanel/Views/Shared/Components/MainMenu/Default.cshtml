@@ -1,0 +1,234 @@
+﻿@using System.Security.Claims
+@{
+    string role = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role).Value;
+    //string _envanterHollandYapildiMi = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Surname).Value;
+    //string _kendiniDegerlendirmeEnvanteriYapildiMi = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Dsa).Value;
+}
+<aside>
+
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <!-- Sidebar user (optional) -->
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="image">
+                    <img src="~/Panel/dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
+                </div>
+                <div class="info">
+                    <a href="#" class="d-block">@User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name).Value </a>
+                </div>
+            </div>
+
+            <!-- Sidebar Menu -->
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <!-- Add icons to the links using the .nav-icon class
+                         with font-awesome or any other icon font library -->
+                    @*@if (role == "Kurum Öğrenci" && _envanterHollandYapildiMi == "True" && _kendiniDegerlendirmeEnvanteriYapildiMi == "True")*@
+                    @if (role == "Kurum Öğrenci")
+                    {
+                        <li class="nav-item">
+                            <a href="/DanismanPanel/Anasayfa" class="nav-link">
+                                <i class="nav-icon fas fa-home"></i>
+                                <p>
+                                    Anasayfa
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="KonuTakip" class="nav-link">
+                                <i class="nav-icon fas fa-graduation-cap"></i>
+                                <p>
+                                    Konu Takip
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="SoruTakip" class="nav-link">
+                                <i class="nav-icon fas fa-indent"></i>
+                                <p>
+                                    Soru Takip
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="DenemeTakip" class="nav-link">
+                                <i class="nav-icon fas fa-book"></i>
+                                <p>
+                                    Deneme Takip
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="GorevTakip" class="nav-link">
+                                <i class="nav-icon fas fa-calendar"></i>
+                                <p>
+                                    Görev Takip
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="SanalCalismaMasasi" class="nav-link">
+                                <i class="nav-icon fas fa-desktop"></i>
+                                <p>
+                                    Sanal Çalışma Masası
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="DanismanRaporu" class="nav-link">
+                                <i class="nav-icon fas fa-file-pdf"></i>
+                                <p>
+                                    Danışman Raporu
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="Dokumanlar" class="nav-link">
+                                <i class="nav-icon fas fa-list-alt"></i>
+                                <p>
+                                    Dökümanlar
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="DanismanCv" class="nav-link">
+                                <i class="nav-icon fas fa-file-pdf"></i>
+                                <p>
+                                    Danışman CV'si
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="YapimAsamasinda" class="nav-link">
+                                <i class="nav-icon fas fa-list"></i>
+                                <p>
+                                    Duyurular
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="KaynakOnerisi" class="nav-link">
+                                <i class="nav-icon fas fa-book"></i>
+                                <p>
+                                    Kaynak Önerisi
+                                </p>
+                            </a>
+                        </li>
+                    }
+                    @if (role == "Kurum Danışman")
+                    {
+                        <li class="nav-item">
+                            <a href="/DanismanPanel/Anasayfa" class="nav-link">
+                                <i class="nav-icon fas fa-home"></i>
+                                <p>
+                                    Anasayfa
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/DanismanPanel/Ogrenci/OgrenciEkle" class="nav-link">
+                                <i class="nav-icon fas fa-user-circle"></i>
+                                <p>
+                                    Ogrenci Ekle
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/DanismanPanel/Ogrenci/OgrenciListele" class="nav-link">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>
+                                    Öğrencilerim
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/DanismanPanel/Cv/CvEkle" class="nav-link">
+                                <i class="nav-icon fas fa-file-pdf"></i>
+                                <p>
+                                    Danışman CV'si
+                                </p>
+                            </a>
+                        </li>
+
+                    }
+
+                    @if (role == "Kurum Veli")
+                    {
+                        <li class="nav-item">
+                            <a href="/DanismanPanel/Anasayfa" class="nav-link">
+                                <i class="nav-icon fas fa-home"></i>
+                                <p>
+                                    Anasayfa
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="YapimAsamasinda" class="nav-link">
+                                <i class="nav-icon fas fa-file-pdf"></i>
+                                <p>
+                                    Diyetisyen Raporu
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="YapimAsamasinda" class="nav-link">
+                                <i class="nav-icon fas fa-file-pdf"></i>
+                                <p>
+                                    Danışman CV'si
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="YapimAsamasinda" class="nav-link">
+                                <i class="nav-icon fas fa-list"></i>
+                                <p>
+                                    Mesajlar
+                                </p>
+                            </a>
+                        </li>
+                    }
+
+
+                    @if (role == "Kurum Yönetici")
+                    {
+                        <li class="nav-item">
+                            <a href="/DanismanPanel/Anasayfa" class="nav-link">
+                                <i class="nav-icon fas fa-home"></i>
+                                <p>
+                                    Anasayfa
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/DanismanPanel/Ogrenci/OgrenciListele" class="nav-link">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>
+                                    Öğrencilerim
+                                </p>
+                            </a>
+                        </li>
+
+                    }
+
+                    <li class="nav-item">
+                        <a href="/Login/CikisYap" class="nav-link">
+                            <i class="nav-icon fas fa-sign-out-alt"></i>
+                            <p>
+                                Çıkış
+                            </p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- /.sidebar-menu -->
+
+        </div>
+        <!-- /.sidebar -->
+    </aside>
+
+
+</aside>

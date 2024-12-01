@@ -1,0 +1,111 @@
+﻿@using UzmanEgitimDanismanim.Shared.Dtos
+@using UzmanEgitimDanismanim.Shared.Common
+@using System.Security.Claims
+@model OgrenciDokumanDto
+
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>CV Ekle</h1>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+
+
+
+
+
+@if (Model == null)
+{
+    
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-warning">
+            <div class="card-header">
+                <h3 class="card-title">CV Ekle</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+
+                    <form asp-action="CvEkle" class="cmxform form-horizontal tasi-form col-md-12" method="post" enctype="multipart/form-data">
+                        <input id="OgrenciId" name="OgrenciId" value="@User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Sid).Value" type="hidden" />
+                        <div class="form-group row">
+
+                            <div class="col-md-4">
+                                <label>Cv (Doc, Docx veya PDF)</label>
+                            </div>
+
+                            <div class="col-md-6">
+                                <input type="file" class="form-control" name="Dosya" required />
+                            </div>
+
+                            <div class="col-md-2">
+                                <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-save"></i> Kaydet</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+</div>
+}
+else
+{
+<div class="card card-danger">
+    <div class="card-header">
+        <h3 class="card-title">Danışman CV'si</h3>
+
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+    <div class="card-body" id="dersGrafikChartContent">
+
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Dokuman Adı</th>
+                    <th>Danışman Cv'si</th>
+                    <th>Ekleme Tarihi</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                    <tr class="gradeX" data-widget="expandable-table" aria-expanded="false">
+                        <td>@Html.DisplayFor(modelItem => Model.DokumanAdi)</td>
+                        <td>
+                            <a href="~/Panel/Files/Cv/@Html.DisplayFor(modelItem => Model.Dokuman)" target="_blank">@Model.Dokuman</a>
+                        </td>
+                        <td>@Model.IslemTarihi.ToString("dd MMMM yyyy")</td>
+                    </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+    <!-- /.card-body -->
+</div>
+<!-- /.card -->
+}

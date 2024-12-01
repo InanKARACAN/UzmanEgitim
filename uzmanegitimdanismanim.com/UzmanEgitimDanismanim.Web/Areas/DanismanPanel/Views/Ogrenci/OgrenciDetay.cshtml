@@ -1,0 +1,79 @@
+﻿@model UzmanEgitimDanismanim.Shared.ViewModels.OgrenciDetayViewModel
+@using System.Security.Claims
+@using UzmanEgitimDanismanim.Shared.Common
+
+@{
+    ViewData["Title"] = "Danışman Panel - Öğrenci Detay";
+
+    string role = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role).Value;
+    bool _readonly = false;
+
+    if (role == "Kurum Yönetici") _readonly = true;
+}
+
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1><span class="fa fa-user"></span> @Model.Ogrenci.Ad  @Model.Ogrenci.Soyad</h1>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<div class="row">
+    <div class="col-12">
+        <!-- Custom Tabs -->
+        <div class="card">
+            <div class="card-header d-flex p-0">
+                <ul class="nav nav-pills p-2" id="ogrenciDetayTab">
+                    <li class="nav-item"><a class="nav-link @if(!_readonly) {<text>active</text>}" href="#tab_1" data-toggle="tab" @if(_readonly) {<text>hidden</text>}>Öğrenci Bilgileri</a></li>
+                    <li class="nav-item"><a class="nav-link @if(_readonly) {<text>active</text>}" href="#tab_2" data-toggle="tab">Ders-Soru Takip</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Görev Takip</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tab_4" data-toggle="tab">Sınav Takip</a></li>
+
+                    <li class="nav-item"><a class="nav-link" href="#tab_5" data-toggle="tab" @if(_readonly) {<text>hidden</text>}>Danışman Raporu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tab_6" data-toggle="tab" @if(_readonly) {<text>hidden</text>}>Dökümanlar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tab_7" data-toggle="tab" @if(_readonly) {<text>hidden</text>}>Kaynak Önerisi</a></li>
+                </ul>
+            </div><!-- /.card-header -->
+            <div class="card-body">
+                <div class="tab-content">
+                    <div class="tab-pane @if(!_readonly) {<text>active</text>}" id="tab_1" @if(_readonly) {<text>hidden</text>}>
+                        <partial name="PartialView/_OgrenciGuncelle.cshtml" model="@Model.Ogrenci" />
+                    </div>
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane @if(_readonly) {<text>active</text>}" id="tab_2">
+                        <partial name="PartialView/_DersSoruTakip.cshtml" />
+                    </div>
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane" id="tab_3">
+                        <partial name="PartialView/_GorevTakip.cshtml" model="@Model.GorevListesi" />
+                    </div>
+                    <div class="tab-pane" id="tab_4">
+                        <partial name="PartialView/_DenemeTakip.cshtml" model="@Model.SinavTakipViewModel" />
+                    </div>
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane" id="tab_5">
+                        <partial name="PartialView/_DanismanRaporu.cshtml" model="@Model.Ogrenci.OgrenciDokumanlar.Where(w=> w.DokumanKategori == UzmanEgitimDanismanim.Shared.Enums.OgrenciDokumanKategoriEnum.DanismanRaporu).ToList()" />
+                    </div>
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane" id="tab_6">
+                        <partial name="PartialView/_Dokumanlar.cshtml" model="@Model.Ogrenci.OgrenciDokumanlar.Where(w=> w.DokumanKategori == UzmanEgitimDanismanim.Shared.Enums.OgrenciDokumanKategoriEnum.Dokumanlar).ToList()" />
+                    </div>
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane" id="tab_7">
+                        <partial name="PartialView/_KaynakOnerisi.cshtml" model="@Model.Ogrenci.OgrenciDokumanlar.Where(w=> w.DokumanKategori == UzmanEgitimDanismanim.Shared.Enums.OgrenciDokumanKategoriEnum.KaynakOnerisi).ToList()" />
+                    </div>
+                    <!-- /.tab-pane -->
+                </div>
+                <!-- /.tab-content -->
+            </div><!-- /.card-body -->
+        </div>
+        <!-- ./card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->

@@ -1,0 +1,63 @@
+﻿@using UzmanEgitimDanismanim.Shared.Dtos
+@model OgrenciDokumanDto
+
+@{
+    ViewData["Title"] = "Danışman Panel - Danışman CV'si";
+}
+
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Danışman CV'si</h1>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+
+
+@if (Model != null)
+{
+<div class="card card-danger">
+    <div class="card-header">
+        <h3 class="card-title">Danışman CV'si</h3>
+
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+    <div class="card-body" id="dersGrafikChartContent">
+
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Dokuman Adı</th>
+                    <th>Danışman CV'si</th>
+                    <th>Ekleme Tarihi</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr class="gradeX" data-widget="expandable-table" aria-expanded="false">
+                        <td>@Html.DisplayFor(modelItem => Model.DokumanAdi)</td>
+                        <td>
+                            <a href="~/Panel/Files/Danisman-Raporu/@Html.DisplayFor(modelItem => Model.Dokuman)" target="_blank">@Model.Dokuman</a>
+                        </td>
+                        <td>@Model.IslemTarihi.ToString("dd MMMM yyyy")</td>
+                    </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+    <!-- /.card-body -->
+</div>
+<!-- /.card -->
+}

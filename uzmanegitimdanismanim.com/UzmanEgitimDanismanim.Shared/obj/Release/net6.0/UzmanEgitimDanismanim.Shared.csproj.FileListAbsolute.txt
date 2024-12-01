@@ -1,0 +1,12 @@
+C:\Projeler\uzmanegitimdanismanim.com\UzmanEgitimDanismanim.Shared\bin\Release\net6.0\UzmanEgitimDanismanim.Shared.deps.json
+C:\Projeler\uzmanegitimdanismanim.com\UzmanEgitimDanismanim.Shared\bin\Release\net6.0\UzmanEgitimDanismanim.Shared.dll
+C:\Projeler\uzmanegitimdanismanim.com\UzmanEgitimDanismanim.Shared\bin\Release\net6.0\UzmanEgitimDanismanim.Shared.pdb
+C:\Projeler\uzmanegitimdanismanim.com\UzmanEgitimDanismanim.Shared\obj\Release\net6.0\UzmanEgitimDanismanim.Shared.csproj.AssemblyReference.cache
+C:\Projeler\uzmanegitimdanismanim.com\UzmanEgitimDanismanim.Shared\obj\Release\net6.0\UzmanEgitimDanismanim.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projeler\uzmanegitimdanismanim.com\UzmanEgitimDanismanim.Shared\obj\Release\net6.0\UzmanEgitimDanismanim.Shared.AssemblyInfoInputs.cache
+C:\Projeler\uzmanegitimdanismanim.com\UzmanEgitimDanismanim.Shared\obj\Release\net6.0\UzmanEgitimDanismanim.Shared.AssemblyInfo.cs
+C:\Projeler\uzmanegitimdanismanim.com\UzmanEgitimDanismanim.Shared\obj\Release\net6.0\UzmanEgitimDanismanim.Shared.csproj.CoreCompileInputs.cache
+C:\Projeler\uzmanegitimdanismanim.com\UzmanEgitimDanismanim.Shared\obj\Release\net6.0\UzmanEgitimDanismanim.Shared.dll
+C:\Projeler\uzmanegitimdanismanim.com\UzmanEgitimDanismanim.Shared\obj\Release\net6.0\refint\UzmanEgitimDanismanim.Shared.dll
+C:\Projeler\uzmanegitimdanismanim.com\UzmanEgitimDanismanim.Shared\obj\Release\net6.0\UzmanEgitimDanismanim.Shared.pdb
+C:\Projeler\uzmanegitimdanismanim.com\UzmanEgitimDanismanim.Shared\obj\Release\net6.0\ref\UzmanEgitimDanismanim.Shared.dll

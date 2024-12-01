@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>@ViewData["Title"]</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="~/Panel/plugins/fontawesome-free/css/all.min.css">
+  
+  <!-- Theme style -->
+  <link rel="stylesheet" href="~/Panel/dist/css/adminlte.min.css">
+
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="~/Panel/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+
+  <!-- daterange picker -->
+  <link rel="stylesheet" href="~/Panel/plugins/daterangepicker/daterangepicker.css">
+
+   <!-- Toastr -->
+  <link rel="stylesheet" href="~/Panel/plugins/toastr/toastr.min.css">
+
+</head>
+<body class="hold-transition sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+
+@await Html.PartialAsync("Components/TopNav/Default.cshtml")
+@await Html.PartialAsync("Components/MainMenu/Default.cshtml")
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+
+
+    <!-- Main content -->
+    <section class="content">
+
+     @RenderBody()
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+@await Html.PartialAsync("Components/Footer/Default.cshtml")
+
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="~/Panel/plugins/jquery/jquery.min.js"></script>
+
+<!-- Bootstrap 4 -->
+<script src="~/Panel/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- InputMask -->
+<script src="~/Panel/plugins/moment/moment.min.js"></script>
+<script src="~/Panel/plugins/moment/locale/tr.js"></script>
+<script src="~/Panel/plugins/inputmask/jquery.inputmask.min.js"></script>
+
+<!-- AdminLTE App -->
+<script src="~/Panel/dist/js/adminlte.min.js"></script>
+
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="~/Panel/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+
+<!-- date-range-picker -->
+<script src="~/Panel/plugins/daterangepicker/daterangepicker.js"></script>
+
+<!-- Toastr -->
+<script src="~/Panel/plugins/toastr/toastr.min.js"></script>
+
+<script src="~/Panel/site.js"></script>
+
+<script>
+  $(function () {
+    
+    var hash = location.hash.replace(/^#/, '');
+    $('#ogrenciDetayTab a[href="#' + hash + '"]').tab('show');
+
+    moment.locale('tr');
+    
+    $('[data-mask]').inputmask();
+
+    //Date picker
+    $('#takvimEkle').datetimepicker({
+        format:'DD.MM.YYYY',
+        maxDate: $.now()
+    });
+    
+    $('#takvim').datetimepicker({
+        format:'DD.MM.YYYY',
+        maxDate: $.now()
+    });
+
+    $('#takvim2').datetimepicker({
+        format:'DD.MM.YYYY',
+        maxDate: $.now()
+    });
+
+    $('#takvimGenis').datetimepicker({
+        format:'DD.MM.YYYY'
+    });
+
+    //Timepicker
+    $('#saat').datetimepicker({
+      format: 'HH:mm'
+    });
+
+    $('#saat2').datetimepicker({
+      format: 'HH:mm'
+    });
+
+    $('#confirm-delete').on('show.bs.modal', function(e) {
+        $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+    });
+  });
+
+   function PagerClick(index) {
+        document.getElementById("hfCurrentPageIndex").value = index;
+        document.forms[0].submit();
+    };
+
+
+    var mesaj = '@TempData["Mesaj"]';
+    var durum = '@TempData["Durum"]';
+    if (mesaj.length > 0) {
+        if(durum==='False')
+            toastr.error(mesaj);
+        else
+            toastr.success(mesaj);
+    }
+
+</script>
+</body>
+</html>
