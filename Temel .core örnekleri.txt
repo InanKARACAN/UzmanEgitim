@@ -1,0 +1,37 @@
+Katmanlı Mimari
+
+https://medium.com/kodluyoruz/asp-net-core-ile-%C3%A7ok-katmanl%C4%B1-yap%C4%B1-ve-veri-taban%C4%B1-entegrasyonu-fe3444c5271a
+
+https://medium.com/@hakancengiz/net-core-serisi-02-katmanl%C4%B1-yap%C4%B1-ve-uygulama-mimarisi-3a0ccb278b16
+
+
+
+DBFirst 
+
+https://medium.com/@yigitataman1/entity-framework-db-first-fddf2dbf2797
+
+
+
+
+Generic Repository ve Unit of Work Kullanarak Temel Bir Infrastructure
+
+https://gokhan-gokalp.com/tr/generic-repository-ve-unit-of-work-kullanarak-basic-infrastructure-tasarlamak/
+
+
+https://medium.com/@Tayfunbolat/net-core-generic-repository-unit-of-work-pattern-nedir-afde86c6574f
+
+https://medium.com/@berkanserbes/repository-pattern-e377bc1059c5
+
+
+
+RabitMQ
+
+https://gokhan-gokalp.com/tr/c-ile-rabbitmq-clienti-kullanarak-publisher-ve-consumer-yapisi/
+
+https://www.borakasmer.com/net-coreda-rabbitmq-ve-signalr-ile-push-notification/
+
+
+
+Api örneği
+
+https://gokhan-gokalp.com/asp-net-web-api-token-based-authentication/
